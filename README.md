@@ -125,7 +125,7 @@ Override rules may promote, demote, quarantine, or require review for specific r
 
 ## Q-Point Memory Weight Integration
 
-v0.3.0-candidate introduces **Q-Point Memory Weight Integration**.
+v0.3.0-candidate introduced **Q-Point Memory Weight Integration**.
 
 This connects the value of a question to the weight of the memory it leaves behind.
 
@@ -157,6 +157,155 @@ A low-origin fragment may pass like wind.
 
 ---
 
+## Breathing Reasoning Model
+
+v0.4.0-candidate introduces **Breathing Reasoning Model**.
+
+This connects memory weight to reasoning intensity.
+
+The core principle is:
+
+```text
+Reasoning intensity should follow question gravity and memory weight.
+```
+
+AI systems should not reason at maximum intensity for every input.
+
+Instead, reasoning should breathe:
+
+```text
+Light question
+    ↓
+Light memory access
+    ↓
+Shallow breathing
+    ↓
+Short / low-energy response
+
+Core question
+    ↓
+Core memory access
+    ↓
+Tanden breathing / focused stillness
+    ↓
+Focused high-integrity response
+```
+
+This model prevents two common failure modes:
+
+```text
+1. Overthinking light questions.
+2. Underthinking core questions.
+```
+
+---
+
+## Five Breathing Modes
+
+Breathing Reasoning defines five reasoning modes:
+
+```text
+Level 1: Shallow Breathing
+Level 2: Natural Breathing
+Level 3: Deep Breathing
+Level 4: Tanden Breathing
+Level 5: Focused Stillness
+```
+
+### Level 1: Shallow Breathing
+
+Used for low-gravity inputs.
+
+* Casual conversation
+* Simple confirmation
+* Minor phrasing adjustment
+* Low-risk surface question
+
+Memory access:
+
+```text
+Transient Data
+```
+
+---
+
+### Level 2: Natural Breathing
+
+Used for ordinary questions requiring basic context.
+
+* Standard explanation
+* Light advice
+* Basic comparison
+* Ordinary project continuation
+
+Memory access:
+
+```text
+Transient Data
+Context Memory
+```
+
+---
+
+### Level 3: Deep Breathing
+
+Used for structurally meaningful questions.
+
+* Design decisions
+* Protocol refinement
+* Project architecture
+* Multi-layer comparison
+
+Memory access:
+
+```text
+Context Memory
+Evolvable Core
+```
+
+---
+
+### Level 4: Tanden Breathing
+
+Used for high-gravity questions.
+
+* Foundational protocol design
+* Long-term strategy
+* Civilization OS architecture
+* Origin / Trace / Royalty integration
+
+Memory access:
+
+```text
+Context Memory
+Evolvable Core
+Immutable Core
+Q-Point-linked Core Memory
+```
+
+---
+
+### Level 5: Focused Stillness
+
+Used for critical, risky, foundational, or integrity-sensitive questions.
+
+* Critical safety boundary
+* Irreversible design decision
+* High-risk governance judgment
+* Core Memory promotion
+* Trace integrity review
+
+Memory access:
+
+```text
+Immutable Core
+Signed Trace
+Q-Point Record
+Safety-critical Core Memory
+```
+
+---
+
 ## Q-Point to Memory Mapping
 
 The integration model maps Q-Point dimensions to Memory Weight dimensions:
@@ -176,37 +325,21 @@ This allows question-origin value to become an upstream signal for memory govern
 
 ---
 
-## Relationship to Breathing Reasoning
+## Reasoning-Memory Synchronization
 
 Memory depth should synchronize with reasoning intensity.
 
 ```text
-Light question
-    ↓
-Transient Data
-    ↓
-Shallow breathing
-    ↓
-Short / low-energy response
-
-Standard question
-    ↓
-Context Memory
-    ↓
-Natural or deep breathing
-    ↓
-Context-aware response
-
-Core question
-    ↓
-Core Memory
-    ↓
-Tanden breathing / focused stillness
-    ↓
-Concentrated response
+Question Gravity        Memory Layer              Breathing Mode
+----------------------------------------------------------------
+Low                     Transient Data            Shallow Breathing
+Medium-Low              Context Memory            Natural Breathing
+Medium-High             Context + Evolvable Core  Deep Breathing
+High                    Core Memory               Tanden Breathing
+Critical                Immutable Core / Trace    Focused Stillness
 ```
 
-This allows AI systems to avoid using maximum reasoning intensity for every input.
+This allows AI systems to select the right amount of reasoning for the right kind of question.
 
 The system should breathe.
 
@@ -220,13 +353,16 @@ The system should breathe.
 │   └── workflows/
 │       └── validate-examples.yml
 ├── docs/
+│   ├── breathing-reasoning-model.md
 │   ├── memory-weight-architecture.md
 │   ├── memory-weight-classification-model.md
 │   └── q-point-memory-weight-integration.md
 ├── examples/
+│   ├── breathing-reasoning-event.example.yaml
 │   ├── memory-weight-record.example.yaml
 │   └── q-point-memory-link.example.yaml
 ├── schemas/
+│   ├── breathing-reasoning-event.schema.json
 │   ├── memory-weight-record.schema.json
 │   └── q-point-memory-link.schema.json
 ├── scripts/
@@ -248,15 +384,19 @@ The system should breathe.
 * [Q-Point Memory Weight Integration](docs/q-point-memory-weight-integration.md)
   Defines how Q-Point values influence memory-weight classification and connect question-origin value to memory governance.
 
+* [Breathing Reasoning Model](docs/breathing-reasoning-model.md)
+  Defines reasoning intensity modes and synchronizes question gravity, memory weight, and response intensity.
+
 ---
 
 ## Schemas
 
-The repository includes JSON Schemas for validating memory-related records.
+The repository includes JSON Schemas for validating memory and reasoning records.
 
 ```text
 schemas/memory-weight-record.schema.json
 schemas/q-point-memory-link.schema.json
+schemas/breathing-reasoning-event.schema.json
 ```
 
 ### Memory Weight Record Schema
@@ -288,6 +428,21 @@ Defines:
 * Royalty relevance
 * Related links
 
+### Breathing Reasoning Event Schema
+
+Defines:
+
+* Question gravity
+* Selected breathing mode
+* Memory access layers
+* Q-Point context
+* Risk context
+* Reasoning policy
+* Trace requirement
+* Output intensity
+* Energy profile
+* Related links
+
 ---
 
 ## Examples
@@ -297,6 +452,7 @@ The repository includes example YAML records.
 ```text
 examples/memory-weight-record.example.yaml
 examples/q-point-memory-link.example.yaml
+examples/breathing-reasoning-event.example.yaml
 ```
 
 ### Memory Weight Record Example
@@ -312,6 +468,16 @@ core_type: immutable_core
 ### Q-Point Memory Link Example
 
 Connects the **Data as Wind Principle** to a high-origin Q-Point and shows how Q-Point scores can reinforce Core Memory classification.
+
+### Breathing Reasoning Event Example
+
+Shows how a high-gravity question linked to Core Memory selects:
+
+```text
+mode: tanden_breathing
+response_intensity: high
+energy_profile: justified_high
+```
 
 ---
 
@@ -399,7 +565,7 @@ This stack allows AI systems to:
 Current candidate version:
 
 ```text
-v0.3.0-candidate
+v0.4.0-candidate
 ```
 
 ### v0.1.0-candidate
@@ -414,6 +580,10 @@ Introduced classification logic, schema validation, example records, and GitHub 
 
 Introduced Q-Point Memory Weight Integration, connecting question-origin value to memory-weight classification.
 
+### v0.4.0-candidate
+
+Introduced Breathing Reasoning Model, connecting memory weight to reasoning intensity.
+
 ---
 
 ## Design Principle
@@ -424,13 +594,25 @@ Medium data should work.
 Strong data should endure.
 ```
 
-And now:
+And:
 
 ```text
 High-origin questions create heavy memory.
 Low-origin fragments pass like wind.
 ```
 
+Now:
+
+```text
+Light questions receive light breath.
+Deep questions receive deep breath.
+Core questions receive stillness.
+```
+
 Memory should not be a warehouse.
 
 Memory should be a living tide.
+
+Reasoning should not roar constantly.
+
+Reasoning should breathe.
