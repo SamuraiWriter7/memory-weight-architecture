@@ -1,46 +1,51 @@
-q_point_memory_link:
-  id: "qpm-link-data-as-wind-001"
+breathing_reasoning_event:
+  id: "breathing-event-001"
   q_point_id: "qpoint-data-as-wind-001"
   memory_record_id: "memory-record-001"
   version: "v0.3.0-candidate"
   status: "active"
 
-  q_point_scores:
-    origin_strength: 96
-    question_depth: 92
-    tension_score: 88
-    resonance_score: 94
-    reuse_potential: 90
-    risk_sensitivity: 35
-    q_point_memory_score: 89.75
-    score_formula: "origin_strength*0.25 + question_depth*0.20 + tension_score*0.20 + resonance_score*0.20 + reuse_potential*0.10 + risk_sensitivity*0.05"
+  breathing_mode: "tanden_breathing"
+  depth_level: "deep"
+  cycle_count: 3
 
-  memory_influence:
-    original_memory_weight_score: 89.95
-    q_point_memory_score_weight: 0.30
-    memory_weight_score_weight: 0.70
-    integrated_memory_weight_score: 89.89
-    final_weight: "strong"
-    final_layer: "core_memory"
-    core_type: "immutable_core"
-    previous_weight: "strong"
-    previous_layer: "core_memory"
+  reasoning:
+    initial_state: "The system begins by centering on the Data as Wind principle."
+    breathing_transitions:
+      - cycle: 1
+        inhale_focus: "origin_strength"
+        exhale_focus: "structural_importance"
+        insight: "Origin strength aligns with structural importance, reinforcing core memory stability."
+      - cycle: 2
+        inhale_focus: "question_depth"
+        exhale_focus: "reuse_potential"
+        insight: "Deep questions naturally expand reuse potential across contexts."
+      - cycle: 3
+        inhale_focus: "tension_score"
+        exhale_focus: "resonance_score"
+        insight: "Tension and resonance form a balanced structural wind, guiding memory promotion."
+
+    final_state: "The breathing cycles converge on a stable structural interpretation of the Data as Wind principle."
+
+  structural_shift:
+    shift_detected: true
+    shift_type: "core_memory_reinforcement"
+    shift_reason: "Breathing reasoning revealed strong alignment between Q-Point origin and Memory Weight structure."
+    shift_intensity: 0.82
 
   decision:
-    action: "promote_to_core_memory"
-    reason: "The linked Q-Point carries high origin strength, deep question value, strong resonance, and high reuse potential. It reinforces the Data as Wind Principle as a foundational memory anchor."
-    review_required: true
+    action: "reinforce_core_memory"
+    reason: "Breathing cycles confirmed deep structural coherence and high resonance across contexts."
     reviewer: "human"
+    review_required: true
     decided_at: "2026-06-12T00:00:00Z"
-    override_applied: true
-    override_reason: "High origin strength and high question depth triggered a Core Memory promotion rule."
 
   trace:
-    trace_id: "trace-data-as-wind-001"
+    trace_id: "trace-breathing-event-001"
     trace_required: true
-    promotion_reason_required: true
     q_point_id_required: true
-    trace_ref: "traces/trace-data-as-wind-001.yaml"
+    memory_record_id_required: true
+    trace_ref: "traces/trace-breathing-event-001.yaml"
 
   royalty:
     royalty_relevant: true
@@ -51,7 +56,7 @@ q_point_memory_link:
     created_at: "2026-06-12T00:00:00Z"
     updated_at: "2026-06-12T00:00:00Z"
     created_by: "Shidenkai Alpha"
-    notes: "This link demonstrates how a high-origin Q-Point can reinforce a Memory Weight Record and preserve it as Core Memory."
+    notes: "This breathing reasoning event demonstrates how deep breathing cycles can reveal structural coherence between Q-Points and Memory Weight Records."
 
   links:
     - type: "q_point"
@@ -60,20 +65,16 @@ q_point_memory_link:
 
     - type: "memory_record"
       target: "memory-record-001"
-      description: "Memory Weight Record preserving the Data as Wind principle."
+      description: "Memory Weight Record reinforced through breathing reasoning."
 
     - type: "trace"
-      target: "trace-data-as-wind-001"
-      description: "Trace record for the emergence and promotion of the principle."
+      target: "trace-breathing-event-001"
+      description: "Trace record for this breathing reasoning event."
 
     - type: "document"
-      target: "docs/q-point-memory-weight-integration.md"
-      description: "Defines how Q-Point values influence Memory Weight classification."
+      target: "docs/breathing-reasoning-model.md"
+      description: "Defines the breathing reasoning model and cycle mechanics."
 
     - type: "schema"
-      target: "schemas/q-point-memory-link.schema.json"
-      description: "Schema used to validate this Q-Point Memory Link example."
-
-    - type: "example"
-      target: "examples/memory-weight-record.example.yaml"
-      description: "Linked Memory Weight Record example."
+      target: "schemas/breathing-reasoning-event.schema.json"
+      description: "Schema used to validate this Breathing Reasoning Event example."
