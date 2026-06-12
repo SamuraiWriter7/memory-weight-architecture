@@ -6,6 +6,100 @@ This project follows a candidate-based versioning style during early specificati
 
 ---
 
+## v0.4.0-candidate
+
+### Added
+
+* Added `docs/breathing-reasoning-model.md`.
+
+  * Defines Breathing Reasoning Model.
+
+  * Connects memory weight to reasoning intensity.
+
+  * Introduces the principle:
+
+    ```text
+    Reasoning intensity should follow question gravity and memory weight.
+    ```
+
+  * Defines five reasoning modes:
+
+    * Shallow Breathing
+    * Natural Breathing
+    * Deep Breathing
+    * Tanden Breathing
+    * Focused Stillness
+
+* Added reasoning-memory synchronization model:
+
+  ```text
+  Question Gravity        Memory Layer              Breathing Mode
+  ----------------------------------------------------------------
+  Low                     Transient Data            Shallow Breathing
+  Medium-Low              Context Memory            Natural Breathing
+  Medium-High             Context + Evolvable Core  Deep Breathing
+  High                    Core Memory               Tanden Breathing
+  Critical                Immutable Core / Trace    Focused Stillness
+  ```
+
+* Added energy-aware reasoning model.
+
+  * Light questions use light memory access and low-energy reasoning.
+  * Core questions justify deeper memory access and focused reasoning.
+  * Critical questions trigger high-integrity reasoning and trace requirements.
+
+* Added warning rule for high-gravity questions with insufficient memory access.
+
+  * If core-level reasoning is required but only transient or context-level memory is available, the system should mark its response as limited.
+
+* Added Trace requirement mapping by breathing mode:
+
+  * Shallow Breathing: no trace required
+  * Natural Breathing: no trace required
+  * Deep Breathing: optional trace
+  * Tanden Breathing: recommended trace
+  * Focused Stillness: trace required
+
+* Added `schemas/breathing-reasoning-event.schema.json`.
+
+  * Defines a validation-ready structure for Breathing Reasoning Events.
+  * Supports validation of:
+
+    * Question gravity
+    * Selected breathing mode
+    * Memory access layers
+    * Q-Point context
+    * Risk context
+    * Reasoning policy
+    * Trace requirement
+    * Output intensity
+    * Energy profile
+    * Related links
+
+* Added `examples/breathing-reasoning-event.example.yaml`.
+
+  * Provides a concrete example of a high-gravity question selecting Tanden Breathing.
+  * Demonstrates how Core Memory, Q-Point context, and focused structural reasoning can be synchronized.
+
+### Changed
+
+* Expanded the project from origin-aware memory governance into reasoning-memory synchronization.
+* Updated `README.md` to reflect v0.4.0-candidate structure.
+* Added Breathing Reasoning Model to the Civilization OS / Kazene OS stack.
+* Extended schema/example validation to include Breathing Reasoning Event records through automatic discovery.
+* Fixed `examples/q-point-memory-link.example.yaml`.
+* Fixed `examples/breathing-reasoning-event.example.yaml`.
+
+### Validation
+
+* Confirmed that the following examples can be validated against their corresponding schemas through the validation script and GitHub Actions workflow:
+
+  * `examples/memory-weight-record.example.yaml`
+  * `examples/q-point-memory-link.example.yaml`
+  * `examples/breathing-reasoning-event.example.yaml`
+
+---
+
 ## v0.3.0-candidate
 
 ### Added
@@ -242,17 +336,6 @@ Light memory passes as breath.
 
 ## Roadmap
 
-### v0.4.0-candidate
-
-Potential next additions:
-
-* Breathing Reasoning Model
-* Reasoning intensity schema
-* Breathing Reasoning event example
-* Memory access rules by reasoning depth
-* Question Gravity integration
-* Tanden / focused-stillness reasoning modes
-
 ### v0.5.0-candidate
 
 Potential next additions:
@@ -264,14 +347,25 @@ Potential next additions:
 * Historical Memory
 * Promotion / Demotion audit log schema
 
+### v0.6.0-candidate
+
+Potential next additions:
+
+* Royalty OS integration
+* Origin attribution event schema
+* Memory-to-value route model
+* Return route integration
+* Contribution weighting model
+
 ### v1.0.0
 
 Potential stabilization goals:
 
 * Stable Memory Weight Record schema
 * Stable Q-Point Memory Link schema
+* Stable Breathing Reasoning Event schema
 * Stable validation workflow
 * Formal classification algorithm
 * Complete documentation stack
-* Compatibility with Trace Protocol, Q-Point Protocol, and Royalty OS
+* Compatibility with Trace Protocol, Q-Point Protocol, Breathing Reasoning, and Royalty OS
 
