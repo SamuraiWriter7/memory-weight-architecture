@@ -6,6 +6,101 @@ This project follows a candidate-based versioning style during early specificati
 
 ---
 
+## v0.3.0-candidate
+
+### Added
+
+* Added `docs/q-point-memory-weight-integration.md`.
+
+  * Defines how Q-Point values influence Memory Weight classification.
+
+  * Connects question-origin value to memory governance.
+
+  * Introduces the principle:
+
+    ```text
+    Question value influences memory weight.
+    ```
+
+  * Defines the flow:
+
+    ```text
+    Human Question
+        ↓
+    Q-Point Evaluation
+        ↓
+    Origin / Depth / Tension / Resonance
+        ↓
+    Memory Weight Classification
+        ↓
+    Core / Context / Transient Memory
+    ```
+
+* Added Q-Point to Memory Weight mapping:
+
+  * `origin_strength` → `origin_value`
+  * `question_depth` → `persistence_score`
+  * `tension_score` → `structural_importance`
+  * `resonance_score` → `cross_context_score`
+  * `risk_sensitivity` → `risk_score`
+  * `reuse_potential` → `reuse_score`
+
+* Added Q-Point-derived memory scoring model:
+
+  * `q_point_memory_score`
+  * `integrated_memory_weight_score`
+
+* Added Q-Point override rules for:
+
+  * High-origin questions
+  * Structural tension anchors
+  * Cross-context resonance
+  * Low-origin low-reuse fragments
+  * High-risk Q-Points requiring review
+
+* Added Trace Protocol integration rules for Q-Point-linked Core Memory promotion.
+
+* Added Royalty OS integration pathway:
+
+  * Q-Point
+  * Memory Weight Record
+  * Trace Record
+  * Derived Output
+  * Royalty / Return Route
+
+* Added `schemas/q-point-memory-link.schema.json`.
+
+  * Defines a validation-ready structure for linking Q-Point Records to Memory Weight Records.
+  * Supports validation of:
+
+    * Q-Point identifiers
+    * Memory record identifiers
+    * Q-Point-derived scores
+    * Integrated memory influence
+    * Final memory layer
+    * Decision records
+    * Trace requirements
+    * Royalty relevance
+    * Related links
+
+* Added `examples/q-point-memory-link.example.yaml`.
+
+  * Provides a concrete example of a Q-Point-linked Memory Weight Record.
+  * Demonstrates how the Data as Wind Principle can be reinforced by Q-Point scores and preserved as Core Memory.
+
+### Changed
+
+* Expanded the project from memory classification into origin-aware memory governance.
+* Updated `README.md` to reflect v0.3.0-candidate structure.
+* Added Q-Point Memory Weight Integration to the Civilization OS / Kazene OS stack.
+* Extended schema/example validation to include Q-Point Memory Link records through automatic discovery.
+
+### Validation
+
+* Confirmed that the Q-Point Memory Link example can be validated against the Q-Point Memory Link schema through the validation script and GitHub Actions workflow.
+
+---
+
 ## v0.2.0-candidate
 
 ### Added
@@ -147,24 +242,36 @@ Light memory passes as breath.
 
 ## Roadmap
 
-### v0.3.0-candidate
+### v0.4.0-candidate
 
 Potential next additions:
 
+* Breathing Reasoning Model
+* Reasoning intensity schema
+* Breathing Reasoning event example
+* Memory access rules by reasoning depth
+* Question Gravity integration
+* Tanden / focused-stillness reasoning modes
+
+### v0.5.0-candidate
+
+Potential next additions:
+
+* Trace-linked memory promotion audit
+* Memory review protocol
 * Archive Layer
 * Frozen Trace
 * Historical Memory
-* Memory Review Protocol
 * Promotion / Demotion audit log schema
-* Breathing Reasoning schema
-* Question Gravity schema
 
 ### v1.0.0
 
 Potential stabilization goals:
 
 * Stable Memory Weight Record schema
+* Stable Q-Point Memory Link schema
 * Stable validation workflow
 * Formal classification algorithm
 * Complete documentation stack
-* Compatibility with Trace Protocol and Q-Point Protocol
+* Compatibility with Trace Protocol, Q-Point Protocol, and Royalty OS
+
