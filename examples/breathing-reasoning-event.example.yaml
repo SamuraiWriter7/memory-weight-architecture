@@ -76,7 +76,6 @@ links:
 target: "qpoint-data-as-wind-001"
 description: "Origin Q-Point for the Data as Wind principle."
 
-```
 - type: "q_point_memory_link"
   target: "qpm-link-data-as-wind-001"
   description: "Q-Point Memory Link connecting the origin question to Core Memory."
