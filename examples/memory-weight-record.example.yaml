@@ -1,0 +1,80 @@
+memory_record:
+id: "memory-record-001"
+title: "Data as Wind Principle"
+weight: "strong"
+layer: "core_memory"
+core_type: "immutable_core"
+status: "active"
+summary: "Data should be treated as flow rather than static property. This principle defines the foundational data view of Kazene OS and Civilization OS."
+content_ref: "docs/memory-weight-architecture.md"
+
+origin:
+source_type: "human_question"
+source_id: "conversation-2026-06-12-data-as-wind"
+q_point_id: "qpoint-data-as-wind-001"
+trace_id: "trace-data-as-wind-001"
+author: "Shidenkai Alpha"
+created_from: "A foundational discussion defining data as wind rather than solid property."
+
+classification:
+origin_value: 95
+persistence_score: 92
+reuse_score: 88
+structural_importance: 96
+risk_score: 35
+cross_context_score: 90
+memory_weight_score: 89.95
+classification_reason: "This record defines a foundational principle used across Data View Layer, Memory Weight Architecture, Breathing Reasoning, Trace Protocol, Q-Point Protocol, and Royalty OS."
+override_applied: true
+override_reason: "High origin value and high structural importance triggered promotion to Core Memory."
+
+lifecycle:
+created_at: "2026-06-12T00:00:00Z"
+updated_at: "2026-06-12T00:00:00Z"
+last_referenced: "2026-06-12T00:00:00Z"
+reference_count: 42
+cross_context_count: 8
+last_promotion: "2026-06-12"
+demotion_allowed: false
+promotion_history:
+- from: "context_memory"
+to: "core_memory"
+changed_at: "2026-06-12T00:00:00Z"
+reason: "The principle became a foundational architectural anchor for Kazene OS."
+reviewer: "human"
+demotion_history: []
+
+retention_policy:
+mode: "append_only"
+review_required: true
+review_interval_days: 180
+purge_allowed: false
+
+access_policy:
+priority: "highest"
+reasoning_depth_required: "tanden"
+allowed_breathing_modes:
+- "deep_breathing"
+- "tanden_breathing"
+- "focused_stillness"
+
+integrity:
+checksum: "sha256-placeholder"
+checksum_algorithm: "sha256"
+signed: false
+signature_ref: "signature-pending"
+review_required: true
+
+links:
+- type: "document"
+target: "docs/memory-weight-architecture.md"
+description: "Defines the three-layer memory structure."
+- type: "document"
+target: "docs/memory-weight-classification-model.md"
+description: "Defines the scoring and classification rules."
+- type: "q_point"
+target: "qpoint-data-as-wind-001"
+description: "Origin point for the Data as Wind principle."
+- type: "trace"
+target: "trace-data-as-wind-001"
+description: "Trace record for the emergence of the principle."
