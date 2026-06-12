@@ -1,0 +1,81 @@
+q_point_memory_link:
+id: "qpm-link-data-as-wind-001"
+q_point_id: "qpoint-data-as-wind-001"
+memory_record_id: "memory-record-001"
+version: "v0.3.0-candidate"
+status: "active"
+
+q_point_scores:
+origin_strength: 96
+question_depth: 92
+tension_score: 88
+resonance_score: 94
+reuse_potential: 90
+risk_sensitivity: 35
+q_point_memory_score: 89.75
+score_formula: "origin_strength*0.25 + question_depth*0.20 + tension_score*0.20 + resonance_score*0.20 + reuse_potential*0.10 + risk_sensitivity*0.05"
+
+memory_influence:
+original_memory_weight_score: 89.95
+q_point_memory_score_weight: 0.30
+memory_weight_score_weight: 0.70
+integrated_memory_weight_score: 89.89
+final_weight: "strong"
+final_layer: "core_memory"
+core_type: "immutable_core"
+previous_weight: "strong"
+previous_layer: "core_memory"
+
+decision:
+action: "promote_to_core_memory"
+reason: "The linked Q-Point carries high origin strength, deep question value, strong resonance, and high reuse potential. It reinforces the Data as Wind Principle as a foundational memory anchor."
+review_required: true
+reviewer: "human"
+decided_at: "2026-06-12T00:00:00Z"
+override_applied: true
+override_reason: "High origin strength and high question depth triggered a Core Memory promotion rule."
+
+trace:
+trace_id: "trace-data-as-wind-001"
+trace_required: true
+promotion_reason_required: true
+q_point_id_required: true
+trace_ref: "traces/trace-data-as-wind-001.yaml"
+
+royalty:
+royalty_relevant: true
+origin_attribution_required: true
+return_route_ref: "return-routes/data-as-wind-origin-return.yaml"
+
+metadata:
+created_at: "2026-06-12T00:00:00Z"
+updated_at: "2026-06-12T00:00:00Z"
+created_by: "Shidenkai Alpha"
+notes: "This link demonstrates how a high-origin Q-Point can reinforce a Memory Weight Record and preserve it as Core Memory."
+
+links:
+- type: "q_point"
+target: "qpoint-data-as-wind-001"
+description: "Origin Q-Point for the Data as Wind principle."
+
+```
+- type: "memory_record"
+  target: "memory-record-001"
+  description: "Memory Weight Record preserving the Data as Wind principle."
+
+- type: "trace"
+  target: "trace-data-as-wind-001"
+  description: "Trace record for the emergence and promotion of the principle."
+
+- type: "document"
+  target: "docs/q-point-memory-weight-integration.md"
+  description: "Defines how Q-Point values influence Memory Weight classification."
+
+- type: "schema"
+  target: "schemas/q-point-memory-link.schema.json"
+  description: "Schema used to validate this Q-Point Memory Link example."
+
+- type: "example"
+  target: "examples/memory-weight-record.example.yaml"
+  description: "Linked Memory Weight Record example."
+```
