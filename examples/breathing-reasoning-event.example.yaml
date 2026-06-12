@@ -1,0 +1,103 @@
+breathing_reasoning_event:
+id: "breathing-event-data-as-wind-001"
+version: "v0.4.0-candidate"
+status: "active"
+
+input_type: "human_question"
+input_ref: "conversation-2026-06-12-data-as-wind"
+question_gravity: "high"
+
+selected_mode:
+level: 4
+name: "tanden_breathing"
+selection_reason: "The input concerns a foundational Civilization OS principle and requires Core Memory, Q-Point context, and focused structural reasoning."
+
+memory_access:
+allowed_layers:
+- "context_memory"
+- "evolvable_core"
+- "immutable_core"
+- "q_point_linked_core_memory"
+accessed_records:
+- "memory-record-001"
+- "qpm-link-data-as-wind-001"
+memory_weight: "strong"
+memory_weight_score: 89.95
+core_memory_accessed: true
+
+q_point_context:
+q_point_id: "qpoint-data-as-wind-001"
+q_point_memory_link_id: "qpm-link-data-as-wind-001"
+origin_strength: 96
+question_depth: 92
+tension_score: 88
+resonance_score: 94
+reuse_potential: 90
+risk_sensitivity: 35
+q_point_memory_score: 89.75
+
+risk_context:
+risk_score: 35
+risk_level: "medium"
+safety_boundary_involved: false
+governance_review_required: true
+risk_reason: "The event affects foundational architecture, but it does not involve a critical safety boundary."
+
+reasoning_policy:
+response_style: "focused_structural_analysis"
+trace_required: true
+review_required: true
+uncertainty_notice_required: false
+core_memory_required: true
+max_response_scope: "core_focused"
+speculation_allowed: false
+
+trace:
+trace_id: "trace-data-as-wind-001"
+trace_required: true
+trace_reason: "Tanden Breathing accessed Core Memory and reinforced a foundational architectural principle."
+trace_ref: "traces/trace-data-as-wind-001.yaml"
+
+output:
+response_intensity: "high"
+response_length: "structured"
+energy_profile: "justified_high"
+output_ref: "docs/breathing-reasoning-model.md"
+confidence: "high"
+
+metadata:
+created_at: "2026-06-12T00:00:00Z"
+updated_at: "2026-06-12T00:00:00Z"
+created_by: "Shidenkai Alpha"
+notes: "This example demonstrates how a high-gravity question linked to Core Memory selects Tanden Breathing instead of shallow or natural reasoning."
+
+links:
+- type: "q_point"
+target: "qpoint-data-as-wind-001"
+description: "Origin Q-Point for the Data as Wind principle."
+
+```
+- type: "q_point_memory_link"
+  target: "qpm-link-data-as-wind-001"
+  description: "Q-Point Memory Link connecting the origin question to Core Memory."
+
+- type: "memory_record"
+  target: "memory-record-001"
+  description: "Memory Weight Record preserving the Data as Wind principle."
+
+- type: "trace"
+  target: "trace-data-as-wind-001"
+  description: "Trace record for the emergence and reinforcement of the principle."
+
+- type: "document"
+  target: "docs/breathing-reasoning-model.md"
+  description: "Defines reasoning intensity modes and memory synchronization."
+
+- type: "schema"
+  target: "schemas/breathing-reasoning-event.schema.json"
+  description: "Schema used to validate this Breathing Reasoning event."
+
+- type: "example"
+  target: "examples/q-point-memory-link.example.yaml"
+  description: "Linked Q-Point Memory Link example."
+```
