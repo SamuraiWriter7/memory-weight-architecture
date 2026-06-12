@@ -12,7 +12,7 @@ Medium  → Context Memory
 Light   → Transient Data
 ```
 
-The goal is to reduce context bloat, improve reasoning clarity, support energy-aware operation, and connect memory management with Civilization OS / Kazene OS concepts such as **Data as Wind**, **Question Gravity**, **Breathing Reasoning**, **Trace Protocol**, and **Q-Point Protocol**.
+The goal is to reduce context bloat, improve reasoning clarity, support energy-aware operation, and connect memory management with Civilization OS / Kazene OS concepts such as **Data as Wind**, **Question Gravity**, **Breathing Reasoning**, **Trace Protocol**, **Q-Point Protocol**, and **Royalty OS**.
 
 > From giant warehouses to the mind of a master.
 
@@ -97,7 +97,7 @@ Examples:
 
 ## Memory Weight Classification
 
-v0.2.0-candidate introduces a classification model for assigning data to memory layers.
+v0.2.0-candidate introduced a classification model for assigning data to memory layers.
 
 Each memory candidate may be evaluated using six axes:
 
@@ -120,6 +120,59 @@ The resulting `memory_weight_score` determines whether the record should be clas
 ```
 
 Override rules may promote, demote, quarantine, or require review for specific records.
+
+---
+
+## Q-Point Memory Weight Integration
+
+v0.3.0-candidate introduces **Q-Point Memory Weight Integration**.
+
+This connects the value of a question to the weight of the memory it leaves behind.
+
+The core principle is:
+
+```text
+Question value influences memory weight.
+```
+
+Q-Point Protocol evaluates the origin, depth, tension, resonance, reuse potential, and risk sensitivity of a question.
+
+Memory Weight Architecture then uses those values to influence memory classification.
+
+```text
+Human Question
+    ↓
+Q-Point Evaluation
+    ↓
+Origin / Depth / Tension / Resonance
+    ↓
+Memory Weight Classification
+    ↓
+Core / Context / Transient Memory
+```
+
+A high-origin question may create a heavier memory trace.
+
+A low-origin fragment may pass like wind.
+
+---
+
+## Q-Point to Memory Mapping
+
+The integration model maps Q-Point dimensions to Memory Weight dimensions:
+
+```text
+Q-Point Dimension        Memory Weight Dimension
+------------------------------------------------
+origin_strength     →    origin_value
+question_depth      →    persistence_score
+tension_score       →    structural_importance
+resonance_score     →    cross_context_score
+risk_sensitivity    →    risk_score
+reuse_potential     →    reuse_score
+```
+
+This allows question-origin value to become an upstream signal for memory governance.
 
 ---
 
@@ -168,11 +221,14 @@ The system should breathe.
 │       └── validate-examples.yml
 ├── docs/
 │   ├── memory-weight-architecture.md
-│   └── memory-weight-classification-model.md
+│   ├── memory-weight-classification-model.md
+│   └── q-point-memory-weight-integration.md
 ├── examples/
-│   └── memory-weight-record.example.yaml
+│   ├── memory-weight-record.example.yaml
+│   └── q-point-memory-link.example.yaml
 ├── schemas/
-│   └── memory-weight-record.schema.json
+│   ├── memory-weight-record.schema.json
+│   └── q-point-memory-link.schema.json
 ├── scripts/
 │   └── validate_examples.py
 ├── CHANGELOG.md
@@ -189,17 +245,23 @@ The system should breathe.
 * [Memory Weight Classification Model](docs/memory-weight-classification-model.md)
   Defines scoring axes, classification thresholds, override rules, promotion rules, demotion rules, and synchronization with Breathing Reasoning.
 
+* [Q-Point Memory Weight Integration](docs/q-point-memory-weight-integration.md)
+  Defines how Q-Point values influence memory-weight classification and connect question-origin value to memory governance.
+
 ---
 
-## Schema
+## Schemas
 
-The repository includes a JSON Schema for validating memory weight records.
+The repository includes JSON Schemas for validating memory-related records.
 
 ```text
 schemas/memory-weight-record.schema.json
+schemas/q-point-memory-link.schema.json
 ```
 
-The schema defines:
+### Memory Weight Record Schema
+
+Defines:
 
 * Memory weight
 * Memory layer
@@ -212,23 +274,44 @@ The schema defines:
 * Integrity metadata
 * Related links
 
+### Q-Point Memory Link Schema
+
+Defines:
+
+* Q-Point identifier
+* Memory Weight Record identifier
+* Q-Point-derived scores
+* Integrated memory weight score
+* Final memory layer
+* Decision record
+* Trace requirements
+* Royalty relevance
+* Related links
+
 ---
 
-## Example
+## Examples
 
-The repository includes an example YAML record.
+The repository includes example YAML records.
 
 ```text
 examples/memory-weight-record.example.yaml
+examples/q-point-memory-link.example.yaml
 ```
 
-The example records the **Data as Wind Principle** as:
+### Memory Weight Record Example
+
+Records the **Data as Wind Principle** as:
 
 ```text
 weight: strong
 layer: core_memory
 core_type: immutable_core
 ```
+
+### Q-Point Memory Link Example
+
+Connects the **Data as Wind Principle** to a high-origin Q-Point and shows how Q-Point scores can reinforce Core Memory classification.
 
 ---
 
@@ -283,6 +366,10 @@ Data View Layer
     ↓
 Question Gravity Layer
     ↓
+Q-Point Protocol
+    ↓
+Q-Point Memory Weight Integration
+    ↓
 Memory Weight Architecture
     ↓
 Memory Weight Classification Model
@@ -291,8 +378,6 @@ Breathing Reasoning Model
     ↓
 Trace Protocol
     ↓
-Q-Point Protocol
-    ↓
 Royalty OS
 ```
 
@@ -300,6 +385,7 @@ This stack allows AI systems to:
 
 * See data as flow
 * Read the gravity of questions
+* Evaluate origin value
 * Select the appropriate memory depth
 * Adjust reasoning intensity
 * Preserve origin
@@ -313,7 +399,7 @@ This stack allows AI systems to:
 Current candidate version:
 
 ```text
-v0.2.0-candidate
+v0.3.0-candidate
 ```
 
 ### v0.1.0-candidate
@@ -324,6 +410,10 @@ Introduced the core three-layer memory architecture.
 
 Introduced classification logic, schema validation, example records, and GitHub Actions validation.
 
+### v0.3.0-candidate
+
+Introduced Q-Point Memory Weight Integration, connecting question-origin value to memory-weight classification.
+
 ---
 
 ## Design Principle
@@ -332,6 +422,13 @@ Introduced classification logic, schema validation, example records, and GitHub 
 Light data should pass.
 Medium data should work.
 Strong data should endure.
+```
+
+And now:
+
+```text
+High-origin questions create heavy memory.
+Low-origin fragments pass like wind.
 ```
 
 Memory should not be a warehouse.
