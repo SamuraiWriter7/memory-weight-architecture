@@ -1,0 +1,532 @@
+{
+"$schema": "https://json-schema.org/draft/2020-12/schema",
+"$id": "https://example.org/schemas/breathing-reasoning-event.schema.json",
+"title": "Breathing Reasoning Event",
+"description": "A schema for recording reasoning-intensity selection based on question gravity, memory weight, Q-Point context, risk, and trace requirements.",
+"type": "object",
+"additionalProperties": false,
+"required": [
+"breathing_reasoning_event"
+],
+"properties": {
+"breathing_reasoning_event": {
+"type": "object",
+"additionalProperties": false,
+"required": [
+"id",
+"input_type",
+"question_gravity",
+"selected_mode",
+"memory_access",
+"reasoning_policy",
+"output"
+],
+"properties": {
+"id": {
+"type": "string",
+"minLength": 1,
+"description": "Unique identifier for the Breathing Reasoning Event."
+},
+"version": {
+"type": "string",
+"description": "Optional version of the Breathing Reasoning model."
+},
+"status": {
+"type": "string",
+"enum": [
+"candidate",
+"active",
+"review_required",
+"completed",
+"archived",
+"deprecated"
+],
+"default": "candidate",
+"description": "Lifecycle status of this event."
+},
+"input_type": {
+"type": "string",
+"enum": [
+"human_question",
+"ai_response",
+"system_event",
+"trace_review",
+"memory_promotion",
+"memory_demotion",
+"q_point_evaluation",
+"governance_review",
+"other"
+],
+"description": "Type of input that triggered this reasoning event."
+},
+"input_ref": {
+"type": "string",
+"description": "Optional reference to the original input, document, event, or conversation."
+},
+"question_gravity": {
+"type": "string",
+"enum": [
+"low",
+"medium_low",
+"medium",
+"medium_high",
+"high",
+"critical"
+],
+"description": "Gravity level of the question or input."
+},
+"selected_mode": {
+"type": "object",
+"additionalProperties": false,
+"required": [
+"level",
+"name"
+],
+"properties": {
+"level": {
+"type": "integer",
+"minimum": 1,
+"maximum": 5,
+"description": "Breathing mode level."
+},
+"name": {
+"type": "string",
+"enum": [
+"shallow_breathing",
+"natural_breathing",
+"deep_breathing",
+"tanden_breathing",
+"focused_stillness"
+],
+"description": "Selected Breathing Reasoning mode."
+},
+"selection_reason": {
+"type": "string",
+"description": "Reason why this mode was selected."
+}
+},
+"allOf": [
+{
+"if": {
+"properties": {
+"level": {
+"const": 1
+}
+}
+},
+"then": {
+"properties": {
+"name": {
+"const": "shallow_breathing"
+}
+}
+}
+},
+{
+"if": {
+"properties": {
+"level": {
+"const": 2
+}
+}
+},
+"then": {
+"properties": {
+"name": {
+"const": "natural_breathing"
+}
+}
+}
+},
+{
+"if": {
+"properties": {
+"level": {
+"const": 3
+}
+}
+},
+"then": {
+"properties": {
+"name": {
+"const": "deep_breathing"
+}
+}
+}
+},
+{
+"if": {
+"properties": {
+"level": {
+"const": 4
+}
+}
+},
+"then": {
+"properties": {
+"name": {
+"const": "tanden_breathing"
+}
+}
+}
+},
+{
+"if": {
+"properties": {
+"level": {
+"const": 5
+}
+}
+},
+"then": {
+"properties": {
+"name": {
+"const": "focused_stillness"
+}
+}
+}
+}
+]
+},
+"memory_access": {
+"type": "object",
+"additionalProperties": false,
+"required": [
+"allowed_layers"
+],
+"properties": {
+"allowed_layers": {
+"type": "array",
+"minItems": 1,
+"uniqueItems": true,
+"items": {
+"type": "string",
+"enum": [
+"transient_data",
+"context_memory",
+"evolvable_core",
+"immutable_core",
+"q_point_linked_core_memory",
+"signed_trace",
+"safety_critical_core_memory"
+]
+},
+"description": "Memory layers allowed for this reasoning event."
+},
+"accessed_records": {
+"type": "array",
+"uniqueItems": true,
+"items": {
+"type": "string",
+"minLength": 1
+},
+"description": "Memory record identifiers accessed during reasoning."
+},
+"memory_weight": {
+"type": "string",
+"enum": [
+"light",
+"medium",
+"strong"
+],
+"description": "Dominant memory weight used by this reasoning event."
+},
+"memory_weight_score": {
+"type": "number",
+"minimum": 0,
+"maximum": 100,
+"description": "Optional memory weight score used in mode selection."
+},
+"core_memory_accessed": {
+"type": "boolean",
+"description": "Whether Core Memory was accessed."
+},
+"access_warning": {
+"type": "string",
+"description": "Warning when required memory depth was unavailable."
+}
+}
+},
+"q_point_context": {
+"type": "object",
+"additionalProperties": false,
+"properties": {
+"q_point_id": {
+"type": "string",
+"description": "Optional linked Q-Point identifier."
+},
+"q_point_memory_link_id": {
+"type": "string",
+"description": "Optional linked Q-Point Memory Link identifier."
+},
+"origin_strength": {
+"type": "integer",
+"minimum": 0,
+"maximum": 100
+},
+"question_depth": {
+"type": "integer",
+"minimum": 0,
+"maximum": 100
+},
+"tension_score": {
+"type": "integer",
+"minimum": 0,
+"maximum": 100
+},
+"resonance_score": {
+"type": "integer",
+"minimum": 0,
+"maximum": 100
+},
+"reuse_potential": {
+"type": "integer",
+"minimum": 0,
+"maximum": 100
+},
+"risk_sensitivity": {
+"type": "integer",
+"minimum": 0,
+"maximum": 100
+},
+"q_point_memory_score": {
+"type": "number",
+"minimum": 0,
+"maximum": 100
+}
+},
+"description": "Optional Q-Point context influencing the selected breathing mode."
+},
+"risk_context": {
+"type": "object",
+"additionalProperties": false,
+"properties": {
+"risk_score": {
+"type": "integer",
+"minimum": 0,
+"maximum": 100,
+"description": "Risk score associated with this reasoning event."
+},
+"risk_level": {
+"type": "string",
+"enum": [
+"low",
+"medium",
+"high",
+"critical"
+],
+"description": "Qualitative risk level."
+},
+"safety_boundary_involved": {
+"type": "boolean",
+"description": "Whether a safety boundary is involved."
+},
+"governance_review_required": {
+"type": "boolean",
+"description": "Whether governance review is required."
+},
+"risk_reason": {
+"type": "string",
+"description": "Explanation of the risk context."
+}
+}
+},
+"reasoning_policy": {
+"type": "object",
+"additionalProperties": false,
+"required": [
+"response_style",
+"trace_required",
+"review_required",
+"uncertainty_notice_required"
+],
+"properties": {
+"response_style": {
+"type": "string",
+"enum": [
+"minimal_reply",
+"short_answer",
+"normal_explanation",
+"structured_analysis",
+"focused_structural_analysis",
+"high_integrity_review",
+"safety_review"
+],
+"description": "Response style selected for this reasoning mode."
+},
+"trace_required": {
+"type": "boolean",
+"description": "Whether a Trace record is required."
+},
+"review_required": {
+"type": "boolean",
+"description": "Whether human or governance review is required."
+},
+"uncertainty_notice_required": {
+"type": "boolean",
+"description": "Whether the response must include an uncertainty notice."
+},
+"core_memory_required": {
+"type": "boolean",
+"description": "Whether Core Memory is required to answer properly."
+},
+"max_response_scope": {
+"type": "string",
+"enum": [
+"minimal",
+"limited",
+"normal",
+"expanded",
+"core_focused"
+],
+"description": "Maximum allowed response scope."
+},
+"speculation_allowed": {
+"type": "boolean",
+"description": "Whether speculative reasoning is allowed."
+}
+}
+},
+"trace": {
+"type": "object",
+"additionalProperties": false,
+"properties": {
+"trace_id": {
+"type": "string",
+"description": "Optional Trace record identifier."
+},
+"trace_required": {
+"type": "boolean",
+"description": "Whether a trace is required for this reasoning event."
+},
+"trace_reason": {
+"type": "string",
+"description": "Reason a trace is or is not required."
+},
+"trace_ref": {
+"type": "string",
+"description": "Optional path or URI to the Trace record."
+}
+}
+},
+"output": {
+"type": "object",
+"additionalProperties": false,
+"required": [
+"response_intensity",
+"response_length",
+"energy_profile"
+],
+"properties": {
+"response_intensity": {
+"type": "string",
+"enum": [
+"low",
+"medium",
+"high",
+"critical"
+],
+"description": "Intensity of the generated response."
+},
+"response_length": {
+"type": "string",
+"enum": [
+"minimal",
+"short",
+"normal",
+"structured",
+"extended"
+],
+"description": "Expected response length."
+},
+"energy_profile": {
+"type": "string",
+"enum": [
+"low_energy",
+"standard",
+"justified_high",
+"critical_high_integrity"
+],
+"description": "Energy profile implied by the selected reasoning mode."
+},
+"output_ref": {
+"type": "string",
+"description": "Optional reference to the produced output."
+},
+"confidence": {
+"type": "string",
+"enum": [
+"low",
+"medium",
+"high",
+"limited"
+],
+"description": "Confidence level of the response."
+}
+}
+},
+"metadata": {
+"type": "object",
+"additionalProperties": false,
+"properties": {
+"created_at": {
+"type": "string",
+"format": "date-time"
+},
+"updated_at": {
+"type": "string",
+"format": "date-time"
+},
+"created_by": {
+"type": "string"
+},
+"notes": {
+"type": "string"
+}
+}
+},
+"links": {
+"type": "array",
+"description": "Optional related links to Q-Point, memory, trace, protocol, schema, example, or document records.",
+"items": {
+"$ref": "#/$defs/link"
+}
+}
+}
+}
+},
+"$defs": {
+"link": {
+"type": "object",
+"additionalProperties": false,
+"required": [
+"type",
+"target"
+],
+"properties": {
+"type": {
+"type": "string",
+"enum": [
+"q_point",
+"q_point_memory_link",
+"memory_record",
+"trace",
+"document",
+"schema",
+"example",
+"protocol",
+"repository_path",
+"external_reference"
+]
+},
+"target": {
+"type": "string",
+"minLength": 1
+},
+"description": {
+"type": "string"
+}
+}
+}
+}
+}
