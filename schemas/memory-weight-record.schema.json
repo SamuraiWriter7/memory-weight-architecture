@@ -1,0 +1,525 @@
+{
+"$schema": "https://json-schema.org/draft/2020-12/schema",
+"$id": "https://example.org/schemas/memory-weight-record.schema.json",
+"title": "Memory Weight Record",
+"description": "A memory classification record for Memory Weight Architecture and Memory Weight Classification Model.",
+"type": "object",
+"additionalProperties": false,
+"required": [
+"memory_record"
+],
+"properties": {
+"memory_record": {
+"type": "object",
+"additionalProperties": false,
+"required": [
+"id",
+"title",
+"weight",
+"layer",
+"summary",
+"origin",
+"classification",
+"lifecycle",
+"retention_policy",
+"access_policy",
+"integrity"
+],
+"properties": {
+"id": {
+"type": "string",
+"minLength": 1,
+"description": "Unique identifier for the memory record."
+},
+"title": {
+"type": "string",
+"minLength": 1,
+"description": "Human-readable title of the memory record."
+},
+"weight": {
+"type": "string",
+"enum": [
+"strong",
+"medium",
+"light"
+],
+"description": "Memory weight classification."
+},
+"layer": {
+"type": "string",
+"enum": [
+"core_memory",
+"context_memory",
+"transient_data"
+],
+"description": "Memory layer assigned to the record."
+},
+"core_type": {
+"type": "string",
+"enum": [
+"immutable_core",
+"evolvable_core"
+],
+"description": "Subtype of core memory. Required only when layer is core_memory."
+},
+"status": {
+"type": "string",
+"enum": [
+"active",
+"candidate",
+"quarantined",
+"archived",
+"deprecated",
+"purged"
+],
+"default": "active",
+"description": "Lifecycle status of the memory record."
+},
+"summary": {
+"type": "string",
+"minLength": 1,
+"description": "Compressed semantic summary of the memory record."
+},
+"content_ref": {
+"type": "string",
+"description": "Optional reference to the original source, document, trace, repository path, or external record."
+},
+"origin": {
+"type": "object",
+"additionalProperties": false,
+"required": [
+"source_type"
+],
+"properties": {
+"source_type": {
+"type": "string",
+"enum": [
+"human_question",
+"ai_response",
+"document",
+"trace_record",
+"q_point_record",
+"protocol",
+"repository",
+"system_event",
+"other"
+],
+"description": "Origin type of the memory record."
+},
+"source_id": {
+"type": "string",
+"description": "Optional source identifier."
+},
+"q_point_id": {
+"type": "string",
+"description": "Optional Q-Point identifier connected to the record."
+},
+"trace_id": {
+"type": "string",
+"description": "Optional trace identifier connected to the record."
+},
+"author": {
+"type": "string",
+"description": "Optional author, creator, or origin actor."
+},
+"created_from": {
+"type": "string",
+"description": "Optional note describing where this memory record came from."
+}
+}
+},
+"classification": {
+"type": "object",
+"additionalProperties": false,
+"required": [
+"origin_value",
+"persistence_score",
+"reuse_score",
+"structural_importance",
+"risk_score",
+"cross_context_score",
+"memory_weight_score"
+],
+"properties": {
+"origin_value": {
+"type": "integer",
+"minimum": 0,
+"maximum": 100,
+"description": "Score measuring proximity to a meaningful origin, human question, or Q-Point."
+},
+"persistence_score": {
+"type": "integer",
+"minimum": 0,
+"maximum": 100,
+"description": "Score measuring long-term persistence value."
+},
+"reuse_score": {
+"type": "integer",
+"minimum": 0,
+"maximum": 100,
+"description": "Score measuring expected or observed reuse value."
+},
+"structural_importance": {
+"type": "integer",
+"minimum": 0,
+"maximum": 100,
+"description": "Score measuring architectural or protocol-level importance."
+},
+"risk_score": {
+"type": "integer",
+"minimum": 0,
+"maximum": 100,
+"description": "Score measuring safety, governance, misuse, corruption, or integrity risk."
+},
+"cross_context_score": {
+"type": "integer",
+"minimum": 0,
+"maximum": 100,
+"description": "Score measuring usefulness across multiple contexts."
+},
+"memory_weight_score": {
+"type": "number",
+"minimum": 0,
+"maximum": 100,
+"description": "Final weighted score used for memory classification."
+},
+"classification_reason": {
+"type": "string",
+"description": "Optional explanation of why this record was assigned to its memory layer."
+},
+"override_applied": {
+"type": "boolean",
+"default": false,
+"description": "Whether an override rule was applied."
+},
+"override_reason": {
+"type": "string",
+"description": "Reason for override, if any."
+}
+}
+},
+"lifecycle": {
+"type": "object",
+"additionalProperties": false,
+"required": [
+"created_at",
+"reference_count",
+"cross_context_count",
+"demotion_allowed"
+],
+"properties": {
+"created_at": {
+"type": "string",
+"format": "date-time",
+"description": "Creation timestamp."
+},
+"updated_at": {
+"type": "string",
+"format": "date-time",
+"description": "Last update timestamp."
+},
+"last_referenced": {
+"type": "string",
+"format": "date-time",
+"description": "Timestamp of the last reference."
+},
+"reference_count": {
+"type": "integer",
+"minimum": 0,
+"description": "Number of times this memory record has been referenced."
+},
+"cross_context_count": {
+"type": "integer",
+"minimum": 0,
+"description": "Number of distinct contexts in which this memory record has been used."
+},
+"last_promotion": {
+"type": "string",
+"format": "date",
+"description": "Date of last promotion."
+},
+"last_demotion": {
+"type": "string",
+"format": "date",
+"description": "Date of last demotion."
+},
+"demotion_allowed": {
+"type": "boolean",
+"description": "Whether demotion is allowed for this record."
+},
+"promotion_history": {
+"type": "array",
+"items": {
+"$ref": "#/$defs/memory_transition"
+},
+"description": "History of promotions."
+},
+"demotion_history": {
+"type": "array",
+"items": {
+"$ref": "#/$defs/memory_transition"
+},
+"description": "History of demotions."
+}
+}
+},
+"retention_policy": {
+"type": "object",
+"additionalProperties": false,
+"required": [
+"mode",
+"review_required"
+],
+"properties": {
+"mode": {
+"type": "string",
+"enum": [
+"volatile",
+"task_based",
+"persistent",
+"append_only",
+"quarantine"
+],
+"description": "Retention mode for this memory record."
+},
+"review_required": {
+"type": "boolean",
+"description": "Whether human or governance review is required."
+},
+"review_interval_days": {
+"type": "integer",
+"minimum": 1,
+"description": "Optional review interval in days."
+},
+"expires_at": {
+"type": "string",
+"format": "date-time",
+"description": "Optional expiration timestamp."
+},
+"purge_allowed": {
+"type": "boolean",
+"description": "Whether purging is allowed."
+}
+}
+},
+"access_policy": {
+"type": "object",
+"additionalProperties": false,
+"required": [
+"priority",
+"reasoning_depth_required"
+],
+"properties": {
+"priority": {
+"type": "string",
+"enum": [
+"lowest",
+"low",
+"adaptive",
+"high",
+"highest"
+],
+"description": "Access priority for retrieval."
+},
+"reasoning_depth_required": {
+"type": "string",
+"enum": [
+"shallow",
+"standard",
+"deep",
+"tanden",
+"focused"
+],
+"description": "Required reasoning depth when this record is accessed."
+},
+"allowed_breathing_modes": {
+"type": "array",
+"items": {
+"type": "string",
+"enum": [
+"shallow_breathing",
+"natural_breathing",
+"deep_breathing",
+"tanden_breathing",
+"focused_stillness"
+]
+},
+"uniqueItems": true,
+"description": "Breathing Reasoning modes allowed to access this record."
+}
+}
+},
+"integrity": {
+"type": "object",
+"additionalProperties": false,
+"required": [
+"signed",
+"review_required"
+],
+"properties": {
+"checksum": {
+"type": "string",
+"description": "Optional checksum for integrity verification."
+},
+"checksum_algorithm": {
+"type": "string",
+"enum": [
+"sha256",
+"sha384",
+"sha512",
+"other"
+],
+"description": "Checksum algorithm used."
+},
+"signed": {
+"type": "boolean",
+"description": "Whether this memory record is signed."
+},
+"signature_ref": {
+"type": "string",
+"description": "Optional reference to signature material."
+},
+"review_required": {
+"type": "boolean",
+"description": "Whether integrity or governance review is required."
+}
+}
+},
+"links": {
+"type": "array",
+"items": {
+"$ref": "#/$defs/memory_link"
+},
+"description": "Optional links to related memory, trace, Q-Point, or protocol records."
+}
+},
+"allOf": [
+{
+"if": {
+"properties": {
+"weight": {
+"const": "strong"
+}
+}
+},
+"then": {
+"properties": {
+"layer": {
+"const": "core_memory"
+}
+},
+"required": [
+"core_type"
+]
+}
+},
+{
+"if": {
+"properties": {
+"weight": {
+"const": "medium"
+}
+}
+},
+"then": {
+"properties": {
+"layer": {
+"const": "context_memory"
+}
+}
+}
+},
+{
+"if": {
+"properties": {
+"weight": {
+"const": "light"
+}
+}
+},
+"then": {
+"properties": {
+"layer": {
+"const": "transient_data"
+}
+}
+}
+}
+]
+}
+},
+"$defs": {
+"memory_transition": {
+"type": "object",
+"additionalProperties": false,
+"required": [
+"from",
+"to",
+"changed_at",
+"reason"
+],
+"properties": {
+"from": {
+"type": "string",
+"enum": [
+"core_memory",
+"context_memory",
+"transient_data",
+"quarantine",
+"archive"
+]
+},
+"to": {
+"type": "string",
+"enum": [
+"core_memory",
+"context_memory",
+"transient_data",
+"quarantine",
+"archive"
+]
+},
+"changed_at": {
+"type": "string",
+"format": "date-time"
+},
+"reason": {
+"type": "string",
+"minLength": 1
+},
+"reviewer": {
+"type": "string"
+}
+}
+},
+"memory_link": {
+"type": "object",
+"additionalProperties": false,
+"required": [
+"type",
+"target"
+],
+"properties": {
+"type": {
+"type": "string",
+"enum": [
+"q_point",
+"trace",
+"protocol",
+"memory_record",
+"document",
+"repository_path",
+"external_reference"
+]
+},
+"target": {
+"type": "string",
+"minLength": 1
+},
+"description": {
+"type": "string"
+}
+}
+}
+}
+}
